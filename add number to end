@@ -1,0 +1,37 @@
+vector<int> Solution::plusOne(vector<int> &v) {
+    int count=0,n=v.size();
+    for (int i=0;i<n;i++){
+        if(v[i]==9)
+        count++;
+        else
+        break;
+    }
+    if (count==n)
+    {
+       vector<int> ans;
+       ans.push_back(1);
+       for (int i=0;i<n;i++)
+       ans.push_back(0);
+       return ans;
+    }
+        else if (v[n-1]==9)
+        {
+            int carry=1;
+            for(int i=n-1;i>=0&&carry==1;i--)
+            {
+                if(v[i]==9) v[i]=0;
+                else{
+                    v[i]++;
+                    carry=0;
+                }
+            }
+        }
+     else
+     v[n-1]++;
+     reverse(v.begin(),v.end());
+     for(int i=n-1;i>=0&&v[i]==0;i--)
+     v.pop_back();
+     reverse(v.begin(),v.end());
+     return v;
+    
+ 
